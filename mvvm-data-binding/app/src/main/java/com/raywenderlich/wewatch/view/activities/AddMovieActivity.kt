@@ -80,7 +80,7 @@ class AddMovieActivity : BaseActivity() {
             if (saved) {
                 finish()
             } else {
-                showMessage(getString(R.string.enter_title))
+                showMessage(getString(R.string.title_date_message))
             }
         })
     }
