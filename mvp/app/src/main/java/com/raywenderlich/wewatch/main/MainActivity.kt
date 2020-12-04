@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), MainContract.ViewInterface {
     }
 
     override fun displayNoMovies() {
-        Log.d(TAG, "No movies to display.")
+        com.raywenderlich.wewatch.util.Log.d(TAG, "No movies to display.")
 
         moviesRecyclerView.visibility = INVISIBLE
         noMoviesLayout.visibility = VISIBLE

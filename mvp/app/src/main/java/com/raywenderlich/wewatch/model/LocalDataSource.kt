@@ -47,13 +47,13 @@ open class LocalDataSource(application: Application) {
     }
 
 
-    fun insert(movie: Movie) {
+    open fun insert(movie: Movie) {
         thread {
             movieDao.insert(movie)
         }
     }
 
-    fun delete(movie: Movie) {
+    open fun delete(movie: Movie) {
         thread {
             movieDao.delete(movie.id)
         }

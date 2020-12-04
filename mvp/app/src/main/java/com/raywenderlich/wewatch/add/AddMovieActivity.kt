@@ -33,7 +33,6 @@ package com.raywenderlich.wewatch.add
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -46,9 +45,9 @@ import com.raywenderlich.wewatch.search.SearchActivity
 import com.raywenderlich.wewatch.network.RetrofitClient.TMDB_IMAGEURL
 import com.squareup.picasso.Picasso
 
-open class AddMovieActivity : AppCompatActivity(), AddMovieContact.ViewInterface {
+open class AddMovieActivity : AppCompatActivity(), AddMovieContract.ViewInterface {
 
-    private lateinit var addMoviePresenter: AddMovieContact.PresenterInterface
+    private lateinit var addMoviePresenter: AddMovieContract.PresenterInterface
     private lateinit var titleEditText: EditText
     private lateinit var releaseDateEditText: EditText
     private lateinit var movieImageView: ImageView

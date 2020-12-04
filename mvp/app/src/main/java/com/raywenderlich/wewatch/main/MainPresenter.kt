@@ -23,6 +23,7 @@ class MainPresenter(private val view: MainContract.ViewInterface, private val da
         get() = object : DisposableObserver<List<Movie>>() {
 
             override fun onNext(movieList: List<Movie>) {
+                com.raywenderlich.wewatch.util.Log.d(TAG, "onNext")
                 if (movieList.isEmpty()) {
                     view.displayNoMovies()
                 } else {
@@ -31,13 +32,13 @@ class MainPresenter(private val view: MainContract.ViewInterface, private val da
             }
 
             override fun onError(@NonNull e: Throwable) {
-                Log.d(TAG, "Error$e")
+                com.raywenderlich.wewatch.util.Log.d(TAG, "Error$e")
                 e.printStackTrace()
                 view.displayError("Error fetching movie list")
             }
 
             override fun onComplete() {
-                Log.d(TAG, "Completed")
+                com.raywenderlich.wewatch.util.Log.d(TAG, "Completed")
             }
         }
 

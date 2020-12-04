@@ -20,18 +20,18 @@ class SearchPresenter(private val view: SearchContract.ViewInterface, private va
         get() = object : DisposableObserver<TmdbResponse>() {
 
             override fun onNext(@NonNull tmdbResponse: TmdbResponse) {
-                Log.d(TAG, "OnNext" + tmdbResponse.totalResults)
+                com.raywenderlich.wewatch.util.Log.d(TAG, "OnNext" + tmdbResponse.totalResults)
                 view.displayResult(tmdbResponse)
             }
 
             override fun onError(@NonNull e: Throwable) {
-                Log.d(TAG, "Error$e")
+                com.raywenderlich.wewatch.util.Log.d(TAG, "Error$e")
                 e.printStackTrace()
                 view.displayError("Error fetching Movie Data")
             }
 
             override fun onComplete() {
-                Log.d(TAG, "Completed")
+                com.raywenderlich.wewatch.util.Log.d(TAG, "Completed")
             }
         }
 

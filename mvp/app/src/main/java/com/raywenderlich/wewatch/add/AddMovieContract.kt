@@ -1,6 +1,6 @@
 package com.raywenderlich.wewatch.add
 
-class AddMovieContact {
+class AddMovieContract {
 
     interface PresenterInterface {
         fun addMovie(title: String, releaseDate: String, posterPath: String)
