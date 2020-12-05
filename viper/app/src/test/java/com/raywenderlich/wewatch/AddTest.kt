@@ -5,46 +5,47 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.never
 import com.nhaarman.mockito_kotlin.verify
 import com.raywenderlich.wewatch.data.entity.Movie
-import com.raywenderlich.wewatch.presenter.AddPresenter
+import com.raywenderlich.wewatch.presenter.AddMoviePresenter
+import com.raywenderlich.wewatch.presenter.AddPresenterTests
 import org.junit.Before
 import org.junit.Test
 import ru.terrakok.cicerone.Cicerone
 
 class AddTest {
 
-  private lateinit var presenter: AddPresenter
-  private lateinit var view: AddContract.View
-  private lateinit var interactor: AddContract.Interactor
+    private lateinit var presenter: AddMoviePresenter
+    private lateinit var view: AddContract.View
+    private lateinit var interactor: AddContract.Interactor
 
-  @Before
-  fun setup() {
+    @Before
+    fun setup() {
 
-    val cicerone = Cicerone.create()
-    val router = cicerone.router
+        val cicerone = Cicerone.create()
+        val router = cicerone.router
 
-    view = mock()
-    interactor = mock()
-    presenter = AddPresenter(view, interactor, router)
-  }
+        view = mock()
+        interactor = mock()
+        presenter = AddMoviePresenter(view, interactor, router)
+    }
 
-  @Test
-  fun displayMessageWithBlankTitle() {
-    presenter.addMovies("", "")
-    verify(view).showMessage(any())
-  }
+    @Test
+    fun displayMessageWithBlankTitle() {
+        presenter.addMovies("", "")
+        verify(view).showMessage(any())
+    }
 
-  @Test
-  fun neverCallAddMovieWithBlankTitle() {
-    presenter.addMovies("", "")
-    verify(interactor, never()).addMovie(any())
-  }
+    @Test
+    fun neverCallAddMovieWithBlankTitle() {
+        presenter.addMovies("", "")
+        verify(interactor, never()).addMovie(any())
+    }
 
-  @Test
-  fun addMovieWithTitle() {
-    val movie = Movie(title = "Test Movie", releaseDate = "1991")
-    presenter.addMovies(movie.title!!, movie.releaseDate!!)
-    verify(interactor).addMovie(movie)
-  }
+    @Test
+    fun addMovieWithTitle() {
+        val movie = Movie(title = "Test Movie", releaseDate = "1991")
+        presenter.addMovies(movie.title!!, movie.releaseDate!!)
+        verify(interactor).addMovie(movie)
+    }
 
 }
 
